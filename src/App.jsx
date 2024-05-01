@@ -11,7 +11,7 @@ function App(props) {
       <div>
         <Navbar onChange={(e) => setSearch(e.target.value)} />
       </div>
-      <div className="mt-20 mx-auto">
+      <div className="mt-20 mx-auto grid md:grid-cols-4">
         {Data.filter((item) =>
           search.toLowerCase() === ""
             ? true
@@ -28,9 +28,9 @@ function App(props) {
                 className="rounded-2xl w-32 mb-2"
               />
             </div>
-            <p>{item.name}</p>
-            <p>{item.description}</p>
-            <p>Rp {item.price}</p>
+            <p className="font-bold text-kopi">{item.name}</p>
+            <p className="text-[#F5F5DC] text-sm mb-1">{item.description}</p>
+            <p className="text-sm text-[#C3B091]">Rp {item.price}</p>
           </div>
         ))}
       </div>
