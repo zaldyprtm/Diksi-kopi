@@ -21,14 +21,14 @@ function App(props) {
             key={item.id}
             className="mb-10 mx-auto w-80 grid grid-cols-1 text-center"
           >
-            <div className="flex justify-center">
+            <div className="flex justify-center w-24 items-center mx-auto">
               <img
                 src={item.image}
                 alt={item.name}
-                className="rounded-2xl w-32 mb-2"
+                className="rounded-2xl w-28 mb-2 hover:scale-125 transition ease-in-out duration-300"
               />
             </div>
-            <p className="font-bold text-kopi">{item.name}</p>
+            <p className="font-bold text-kopi mt-2">{item.name}</p>
             <p className="text-[#F5F5DC] text-sm mb-1">{item.description}</p>
             <p className="text-sm text-[#C3B091]">Rp {item.price}</p>
           </div>
