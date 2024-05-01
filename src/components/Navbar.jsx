@@ -3,7 +3,7 @@ export const Navbar = (props) => {
     <>
       <div className="navbar bg-base-100">
         <div className="flex-1">
-          <a className="btn btn-ghost text-xl text-kopi">Diksi Coffee</a>
+          <a className="btn btn-ghost text-lg text-kopi hover:text-[#C3B091]">Diksi Coffee</a>
         </div>
         <div className="flex-none gap-2">
           <div className="form-control h-8">
