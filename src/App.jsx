@@ -2,20 +2,42 @@ import React, { useState } from "react";
 import { Data } from "./components/Data";
 import { Navbar } from "./components/Navbar";
 import { Paginate } from "./components/Paginate";
+import { Hero } from "./components/Hero";
+import { Welcome } from "./components/Welcome";
+import Slider from "./components/Slider";
 
 function App(props) {
   const [search, setSearch] = useState("");
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 4;
 
-  // Menampilkan hanya 4 item pada halaman pertama
-  const displayData = Data.slice(0, 4);
+  console.log(Data);
+
+  // Menghitung indeks awal dan akhir untuk data pada halaman saat ini
+  const indexOfLastItem = currentPage * itemsPerPage;
+  const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+  const currentDisplayData = Data.slice(indexOfFirstItem, indexOfLastItem);
+
+  // Mengubah halaman
+  const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
   return (
     <>
       <div>
         <Navbar onChange={(e) => setSearch(e.target.value)} />
       </div>
+      <div>
+        {/* <Hero /> */}
+        <Slider />
+        <Welcome />
+      </div>
+
       <div className="mt-20 mx-auto grid md:grid-cols-4">
-        {displayData
+        <div className="mb-4  mx-auto text-center">
+          <h1 className="font-bold text-2xl text-kopi">Menu</h1>
+          <p className="text-sm text-wrap">kami menyediakan berbagai menu kopi pilihan dengan rasa terbaik</p>
+        </div>
+        {currentDisplayData
           .filter((item) =>
             search.toLowerCase() === ""
               ? true
@@ -39,9 +61,12 @@ function App(props) {
             </div>
           ))}
       </div>
-      <div>
-        <Paginate />
-      </div>
+      <Paginate
+        itemsPerPage={itemsPerPage}
+        totalItems={Data.length}
+        currentPage={currentPage}
+        paginate={paginate}
+      />
     </>
   );
 }
